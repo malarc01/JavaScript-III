@@ -1,10 +1,10 @@
 /* The for principles of "this";
 * in your own words. explain the four principle for the "this" keyword below.
 *
-* 1. If this applies to the global scop the value will be equal to the  window
-* 2. when using the this. it refer to the object info instead of the windows
-* 3.When used inside a constructer the this refer to the value inside the object
-* 4.
+* 1.Window/Global Object Binding = If this applies to the global scop the value will be equal to the  window
+* 2. Implicit Binding = when using the this. it refer to the object info instead of the windows
+* 3.New binding = When used inside a constructer the this refer to the value inside the object
+* 4.Explict binding = is when call or apply method is used to override what the constructor is pointing to.
 *
 * write out a code example of each explanation above
 */
@@ -36,33 +36,6 @@ myObj.sayHello('Ryan');
 // Principle 3
 
 // code example for New Binding
-
-// Principle 4
-
-// code example for Explicit Binding
-
-
-
-
-
-
-
-
-const sayNameFunc = obj => {
-  obj.sayName = function() {
-    console.log(`Hello my name is ${this.name}`);
-    console.log(this);
-  };
-};
-
-const me = { name: 'Ryan' };
-const you = { name: 'Freddy' };
-sayNameFunc(me);
-sayNameFunc(you);
-
-
-
-
 function CordialPerson(greeter) {
   this.greeting = 'Hello ';
   this.greeter = greeter;
@@ -77,3 +50,9 @@ const newman = new CordialPerson('Jerry');
 
 newman.speak();
 newman.speak();
+
+// Principle 4
+
+// code example for Explicit Binding
+
+jerry.speak.call(newman); newman.speak.apply(jerry);
